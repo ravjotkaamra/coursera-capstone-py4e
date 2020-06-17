@@ -18,7 +18,7 @@ cur = conn.cursor()
 
 cur.execute('''
             CREATE TABLE IF NOT EXISTS Offenders
-            (id INTEGER UNIQUE, first_name TEXT, last_name TEXT, age INTEGER, date TEXT, race TEXT, country TEXT)
+            (id INTEGER UNIQUE, first_name TEXT, last_name TEXT, age INTEGER, date TEXT, race TEXT, city TEXT)
             ''')
 
 tags = soup('tr')
@@ -36,10 +36,10 @@ for tag in tags:
     age = int(data[6].text.strip())
     date = data[7].text.strip()
     race = data[8].text.strip()
-    country = data[9].text.strip()
+    city = data[9].text.strip()
 
-    cur.execute('''INSERT OR IGNORE INTO Offenders (id, first_name, last_name, age, date, race, country) VALUES (?, ?, ?, ?, ?, ?, ?)''',
-    (count ,first_name, last_name, age, date, race, country))
+    cur.execute('''INSERT OR IGNORE INTO Offenders (id, first_name, last_name, age, date, race, city) VALUES (?, ?, ?, ?, ?, ?, ?)''',
+    (count ,first_name, last_name, age, date, race, city))
     
     if(count%100==0):conn.commit()
 

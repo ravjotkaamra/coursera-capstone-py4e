@@ -26,6 +26,6 @@ count_y = list(race_count.values())
 plt.xlabel('Race')
 plt.ylabel('No. of Executed Offenders')
 plt.title('Death Row Information in Texas')
-plt.bar(race_x, count_y)
+plt.bar(race_x, count_y, width=0.3)
 
 plt.show()
